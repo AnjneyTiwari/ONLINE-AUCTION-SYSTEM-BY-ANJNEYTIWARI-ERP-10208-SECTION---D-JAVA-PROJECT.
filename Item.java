@@ -1,55 +1,43 @@
-
 public class Item {
 
-
-    int itemId;
-    String itemName;
-    double basePrice;
-    double highestBid;
-    String highestBidder;
-    boolean auctionActive;
+    private int itemId;
+    private String itemName;
+    private double basePrice;
+    private double highestBid;
 
     public Item(int itemId, String itemName, double basePrice) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.basePrice = basePrice;
-        this.highestBid = basePrice;   
-        this.highestBidder = "No one";
-        this.auctionActive = false;    
+        this.highestBid = basePrice;
     }
 
-    
-    public void startAuction() {
-        auctionActive = true;
-        System.out.println("Auction started for: " + itemName);
-        System.out.println("Base Price: Rs." + basePrice);
+    public int getItemId() {
+        return itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    public double getHighestBid() {
+        return highestBid;
+    }
+
+    public void setHighestBid(double highestBid) {
+        this.highestBid = highestBid;
+    }
+
+    public void displayItem() {
         System.out.println("--------------------------------");
-    }
-
-    
-    public boolean isAuctionActive() {
-        return auctionActive;
-    }
-
-   
-    public void updateBid(String bidderName, double bidAmount) {
-        if (!auctionActive) {
-            System.out.println("Sorry! Auction has ended. No bids allowed.");
-        } else if (bidAmount > highestBid) {
-            highestBid = bidAmount;
-            highestBidder = bidderName;
-            System.out.println(bidderName + " bids Rs." + bidAmount + " --> Accepted!");
-        } else {
-            System.out.println(bidderName + " bids Rs." + bidAmount + " --> Rejected! Bid must be higher than Rs." + highestBid);
-        }
-    }
-
-    public void endAuction() {
-        auctionActive = false;
+        System.out.println("Item ID      : " + itemId);
+        System.out.println("Item Name    : " + itemName);
+        System.out.println("Base Price   : ₹" + basePrice);
+        System.out.println("Highest Bid  : ₹" + highestBid);
         System.out.println("--------------------------------");
-        System.out.println("Auction Ended for: " + itemName);
-        System.out.println("Winner: " + highestBidder);
-        System.out.println("Final Price: Rs." + highestBid);
-        System.out.println("================================");
     }
 }
